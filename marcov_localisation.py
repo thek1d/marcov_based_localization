@@ -32,7 +32,7 @@ def measurement_possible(cell, pillars, sensor_distance):
     area = 0
     acutal_pos = 0
     next_pillar = 0
-    pillar_after_next = 0
+    pillar_after_next_region = 0
 
     if cell >= 0 and cell < pillars[0] or cell == pillars[4] and cell <=49:
         area = 0
@@ -55,7 +55,10 @@ def measurement_possible(cell, pillars, sensor_distance):
     else:
         return True
 
-        
+''' Creating a map with the probabilities 
+    probabilites of the pillar position is 0.5
+    position previous and afterwards are 0.25
+    this is needed for the posterior'''
 def create_probability_map(size):
     probability_map = [pow(10,-5)] * size
     pillar_index = 0
@@ -103,7 +106,7 @@ if __name__ == '__main__':
                         gridmap, motion_model)
 
         plt.figure(2+distance)
-        plot_bar(prob_list=prior_believe, title='Prior')
+        plot_bar(prob_list=prior_believe, title='Prior_Step%s' %distance)
 
         probability_map = create_probability_map(MAP_SIZE)
         
