@@ -46,7 +46,7 @@ def measurement_possible(cell, pillars, sensor_distance):
         area = 4
     
     acutal_pos = cell
-    next_pillar = pillars[area-1]
+    next_pillar = pillars[area]
     pillar_after_next_region = [pillars[(area + 1) % len(pillars)]-1] + [pillars[(area + 1) % len(pillars)]] + [pillars[(area + 1) % len(pillars)]+1]
 
     
